@@ -94,10 +94,7 @@ clientkeys = awful.util.table.join(
   awful.key(
     Mod.SUPER,
     'f',
-    function (c)
-      c.fullscreen = not c.fullscreen
-      c:raise()
-    end,
+    function (c) c.fullscreen = not c.fullscreen; c:raise() end,
     { description = 'toggle fullscreen', group = 'client' }
   ),
   awful.key(
@@ -115,10 +112,7 @@ clientkeys = awful.util.table.join(
   awful.key(
     Mod.SUPER,
     'm',
-    function (c)
-      c.maximized = not c.maximized
-      c:raise()
-    end,
+    function (c) c.maximized = not c.maximized; c:raise() end,
     { description = 'maximize', group = 'client' }
   )
 )
@@ -130,24 +124,15 @@ for i = 1, 9 do
     awful.key(
       Mod.SUPER,
       '#' .. i + 9,
-      function ()
-        local screen = awful.screen.focused()
-        local tag = screen.tags[i]
-        if tag then
-          tag:view_only()
-        end
-      end,
+      function() awful.screen.focused().tags[i]:view_only() end,
       { description = 'view tag #'..i, group = 'tag' }
     ),
     awful.key(
       Mod.SUPER_SHIFT,
       '#' .. i + 9,
-      function ()
+      function()
         if client.focus then
-          local tag = client.focus.screen.tags[i]
-          if tag then
-            client.focus:move_to_tag(tag)
-          end
+          client.focus:move_to_tag(client.focus.screen.tags[i])
         end
       end,
       { description = 'move focused client to tag #'..i, group = 'tag' }
