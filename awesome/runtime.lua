@@ -2,7 +2,7 @@ local naughty = require('naughty')
 
 local Runtime = {}
 
-function errRuntime(err)
+local function errRuntime(err)
   return {
     preset = naughty.config.presets.critical,
     title = 'Oops, an error happened!',
