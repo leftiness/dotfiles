@@ -5,6 +5,7 @@ require('awful.autofocus')
 local beautiful = require('beautiful')
 local naughty = require('naughty')
 
+local Client = require('client')
 local Key = require('key')
 local Runtime = require('runtime')
 local Screen = require('screen')
@@ -17,6 +18,10 @@ awesome.connect_signal(
   Signal.Awesome.DEBUG_ERROR,
   Runtime.on_debug_error(naughty.notify)
 )
+
+client.connect_signal(Signal.Client.MOUSE_ENTER, Client.focus)
+client.connect_signal(Signal.Client.FOCUS, Client.border_focus)
+client.connect_signal(Signal.Client.UNFOCUS, Client.border_normal)
 
 beautiful.init(awful.util.get_themes_dir() .. DEFAULT_THEME)
 os.execute(CMD_NITROGEN)

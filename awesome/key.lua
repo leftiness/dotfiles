@@ -1,32 +1,9 @@
 local awful = require('awful')
-local beautiful = require('beautiful')
 local hotkeys = require('awful.hotkeys_popup').widget
 
+local Client = require('client')
 local Mod = require('mod')
 local Mouse = require('mouse')
-local Signal = require('signal')
-
-local Client = {}
-
-function Client.next() awful.client.focus.byidx(1) end
-function Client.prev() awful.client.focus.byidx(-1) end
-
-function Client.fullscreen(c) c.fullscreen = not c.fullscreen; c:raise() end
-function Client.maximize(c) c.maximized = not c.maximized; c:raise() end
-function Client.focus(c) client.focus = c; c:raise() end
-function Client.promote(c) c:swap(awful.client.getmaster()) end
-function Client.kill(c) c:kill() end
-
-function Client.border_focus(c) c.border_color = beautiful.border_focus end
-function Client.border_normal(c) c.border_color = beautiful.border_normal end
-
-function Client.to_tag(i)
-  return function()
-    if client.focus then
-      client.focus:move_to_tag(client.focus.screen.tags[i])
-    end
-  end
-end
 
 local Master = {}
 function Master.grow() awful.tag.incmwfact(0.05) end
@@ -114,9 +91,5 @@ Key.CLIENT_BUTTON = awful.util.table.join(
   awful.button({}, Mouse.click.LEFT, Client.focus),
   awful.button(Mod.SUPER, Mouse.click.LEFT, awful.mouse.client.move)
 )
-
-client.connect_signal(Signal.Client.MOUSE_ENTER, Client.focus)
-client.connect_signal(Signal.Client.FOCUS, Client.border_focus)
-client.connect_signal(Signal.Client.UNFOCUS, Client.border_normal)
 
 return Key
