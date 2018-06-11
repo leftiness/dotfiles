@@ -4,10 +4,7 @@ local hotkeys = require('awful.hotkeys_popup').widget
 
 local Mod = require('mod')
 local Mouse = require('mouse')
-
-local SIGNAL_MOUSE_ENTER = 'mouse::enter'
-local SIGNAL_FOCUS = 'focus'
-local SIGNAL_UNFOCUS = 'unfocus'
+local Signal = require('signal')
 
 local Client = {}
 
@@ -122,8 +119,8 @@ Key.CLIENT_BUTTON = awful.util.table.join(
   awful.button(Mod.SUPER, Mouse.click.LEFT, awful.mouse.client.move)
 )
 
-client.connect_signal(SIGNAL_MOUSE_ENTER, Client.focus)
-client.connect_signal(SIGNAL_FOCUS, Client.border_focus)
-client.connect_signal(SIGNAL_UNFOCUS, Client.border_normal)
+client.connect_signal(Signal.Client.MOUSE_ENTER, Client.focus)
+client.connect_signal(Signal.Client.FOCUS, Client.border_focus)
+client.connect_signal(Signal.Client.UNFOCUS, Client.border_normal)
 
 return Key

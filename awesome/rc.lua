@@ -8,13 +8,13 @@ local naughty = require('naughty')
 local Key = require('key')
 local Runtime = require('runtime')
 local Screen = require('screen')
+local Signal = require('signal')
 
 local DEFAULT_THEME = 'default/theme.lua'
-local SIGNAL_DEBUG = 'debug::error'
 local CMD_NITROGEN = 'nitrogen --restore'
 
 awesome.connect_signal(
-  SIGNAL_DEBUG,
+  Signal.Awesome.DEBUG_ERROR,
   Runtime.on_debug_error(naughty.notify)
 )
 
