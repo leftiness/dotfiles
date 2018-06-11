@@ -4,13 +4,11 @@ local hotkeys = require('awful.hotkeys_popup').widget
 local Client = require('client')
 local Mod = require('mod')
 local Mouse = require('mouse')
+local Screen = require('screen')
 
 local Master = {}
 function Master.grow() awful.tag.incmwfact(0.05) end
 function Master.shrink() awful.tag.incmwfact(-0.05) end
-
-local Prompt = {}
-function Prompt.run() awful.screen.focused().mypromptbox:run() end
 
 local Tag = {}
 function Tag.view(i)
@@ -58,7 +56,7 @@ Key.GLOBAL = awful.util.table.join(
     .new_key(Mod.SUPER, 'h', Master.shrink),
 
   with_tip('run prompt', 'launcher')
-    .new_key(Mod.SUPER, 'space', Prompt.run)
+    .new_key(Mod.SUPER, 'space', Screen.run)
 )
 
 for i = 1, 9 do

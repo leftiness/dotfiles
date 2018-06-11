@@ -53,4 +53,8 @@ function Screen.on_connect(s)
   })
 end
 
+function Screen.run()
+  awful.screen.focused().mypromptbox:run()
+end
+
 return Screen
