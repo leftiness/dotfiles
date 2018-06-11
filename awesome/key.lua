@@ -5,17 +5,7 @@ local Client = require('client')
 local Mod = require('mod')
 local Mouse = require('mouse')
 local Screen = require('screen')
-
-local Master = {}
-function Master.grow() awful.tag.incmwfact(0.05) end
-function Master.shrink() awful.tag.incmwfact(-0.05) end
-
-local Tag = {}
-function Tag.view(i)
-  return function()
-    awful.screen.focused().tags[i]:view_only()
-  end
-end
+local Tag = require('tag')
 
 local Key = {}
 
@@ -50,10 +40,10 @@ Key.GLOBAL = awful.util.table.join(
     .new_key(Mod.SUPER, 'k', Client.prev),
 
   with_tip('grow master', 'layout')
-    .new_key(Mod.SUPER, 'l', Master.grow),
+    .new_key(Mod.SUPER, 'l', Tag.grow),
 
   with_tip('shrink master', 'layout')
-    .new_key(Mod.SUPER, 'h', Master.shrink),
+    .new_key(Mod.SUPER, 'h', Tag.shrink),
 
   with_tip('run prompt', 'launcher')
     .new_key(Mod.SUPER, 'space', Screen.run)
