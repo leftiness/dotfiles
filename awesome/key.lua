@@ -42,80 +42,76 @@ function Tag.view(i)
   end
 end
 
-local Tip = {
-  Awesome = {
-    SHOW_HELP = { description = 'show help', group = 'awesome' },
-    RELOAD =    { description = 'reload',    group = 'awesome' },
-    QUIT =      { description = 'quit',      group = 'awesome' }
-  },
-  Tag = {
-    PREVIOUS = { description = 'previous', group = 'tag' },
-    NEXT =     { description = 'next',     group = 'tag' }
-  },
-  Client = {
-    NEXT =     { description = 'next',     group = 'client' },
-    PREVIOUS = { description = 'previous', group = 'client' },
-    to_tag = function(i)
-      return { description = 'move client to tag #'..i, group = 'client' }
-    end,
-    FULLSCREEN = { description = 'fullscreen',  group = 'client' },
-    MAXIMIZE =   { description = 'maximize',    group = 'client' },
-    PROMOTE =    { description = 'make master', group = 'client' },
-    CLOSE =      { description = 'close',       group = 'client' }
-  },
-  Layout = {
-    GROW =   { description = 'grow master',   group = 'layout' },
-    SHRINK = { description = 'shrink master', group = 'layout' }
-  },
-  Prompt = {
-    RUN = { description = 'run prompt', group = 'launcher' }
-  },
-  Tag = {
-    view = function(i)
-      return { description = 'view #'..i, group = 'tag' }
-    end
-  }
-}
-
 local Key = {}
 
+function with_tip(desc, group)
+  return {
+    new_key = function(mod, key, op)
+      return awful.key(mod, key, op, { description = desc, group = group })
+    end
+  }
+end
+
 Key.GLOBAL = awful.util.table.join(
-  awful.key(Mod.SUPER_SHIFT, 's', hotkeys.show_help, Tip.Awesome.SHOW_HELP),
-  awful.key(Mod.SUPER_SHIFT, 'r', awesome.restart,   Tip.Awesome.RELOAD),
-  awful.key(Mod.SUPER_SHIFT, 'q', awesome.quit,      Tip.Awesome.QUIT),
+  with_tip('show hotkey help', 'awesome')
+    .new_key(Mod.SUPER_SHIFT, 's', hotkeys.show_help),
 
-  awful.key(Mod.SUPER_SHIFT, 'h', awful.tag.viewprev, Tip.Tag.PREVIOUS),
-  awful.key(Mod.SUPER_SHIFT, 'l', awful.tag.viewnext, Tip.Tag.NEXT),
+  with_tip('reload', 'awesome')
+    .new_key(Mod.SUPER_SHIFT, 'r', awesome.restart),
 
-  awful.key(Mod.SUPER, 'j', Client.next, Tip.Client.NEXT),
-  awful.key(Mod.SUPER, 'k', Client.prev, Tip.Client.PREVIOUS),
+  with_tip('quit', 'awesome')
+    .new_key(Mod.SUPER_SHIFT, 'q', awesome.quit),
 
-  awful.key(Mod.SUPER, 'l', Master.grow,   Tip.Layout.GROW),
-  awful.key(Mod.SUPER, 'h', Master.shrink, Tip.Layout.SHRINK),
+  with_tip('view previous', 'tag')
+    .new_key(Mod.SUPER_SHIFT, 'h', awful.tag.viewprev),
 
-  awful.key(Mod.SUPER, 'space', Prompt.run, Tip.Prompt.RUN)
+  with_tip('view next', 'tag')
+    .new_key(Mod.SUPER_SHIFT, 'l', awful.tag.viewnext),
+
+  with_tip('focus next', 'client')
+    .new_key(Mod.SUPER, 'j', Client.next),
+
+  with_tip('focus previous', 'client')
+    .new_key(Mod.SUPER, 'k', Client.prev),
+
+  with_tip('grow master', 'layout')
+    .new_key(Mod.SUPER, 'l', Master.grow),
+
+  with_tip('shrink master', 'layout')
+    .new_key(Mod.SUPER, 'h', Master.shrink),
+
+  with_tip('run prompt', 'launcher')
+    .new_key(Mod.SUPER, 'space', Prompt.run)
 )
 
 for i = 1, 9 do
   Key.GLOBAL = awful.util.table.join(
     Key.GLOBAL,
-    awful.key(Mod.SUPER, '#'..i+9, Tag.view(i), Tip.Tag.view(i)),
 
-    awful.key(Mod.SUPER_SHIFT, '#'..i+9, Client.to_tag(i), Tip.Client.to_tag(i))
+    with_tip('view #'..i, 'tag')
+      .new_key(Mod.SUPER, '#'..i+9, Tag.view(i)),
+
+    with_tip('move to tag #'..i, 'client')
+      .new_key(Mod.SUPER_SHIFT, '#'..i+9, Client.to_tag(i))
   )
 end
 
 Key.CLIENT = awful.util.table.join(
-  awful.key(Mod.SUPER, 'f', Client.fullscreen, Tip.Client.FULLSCREEN),
-  awful.key(Mod.SUPER, 'm', Client.maximize,   Tip.Client.MAXIMIZE),
+  with_tip('toggle fullscreen', 'client')
+    .new_key(Mod.SUPER, 'f', Client.fullscreen),
 
-  awful.key(Mod.SUPER, 'Return', Client.promote, Tip.Client.PROMOTE),
+  with_tip('toggle maximize', 'client')
+    .new_key(Mod.SUPER, 'm', Client.maximize),
 
-  awful.key(Mod.SUPER_SHIFT, 'c', Client.kill, Tip.Client.CLOSE)
+  with_tip('promote to master', 'client')
+    .new_key(Mod.SUPER, 'Return', Client.promote),
+
+  with_tip('close', 'client')
+    .new_key(Mod.SUPER_SHIFT, 'c', Client.kill)
 )
 
 Key.CLIENT_BUTTON = awful.util.table.join(
-  awful.button({},        Mouse.click.LEFT, Client.focus),
+  awful.button({}, Mouse.click.LEFT, Client.focus),
   awful.button(Mod.SUPER, Mouse.click.LEFT, awful.mouse.client.move)
 )
 
