@@ -1,3 +1,5 @@
+-- Tag utility functions for use in hotkeys and signals
+
 local awful = require('awful')
 
 local Tag = {}

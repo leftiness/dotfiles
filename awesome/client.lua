@@ -1,24 +1,24 @@
-local awful = require('awful')
-local beautiful = require('beautiful')
+-- Client utility functions for use in hotkeys and signals
 
-local Signal = require('signal')
+local awful     = require('awful')
+local beautiful = require('beautiful')
 
 local Client = {}
 
-function Client.next()
+function Client.focus_next()
   awful.client.focus.byidx(1)
 end
 
-function Client.prev()
+function Client.focus_previous()
   awful.client.focus.byidx(-1)
 end
 
-function Client.fullscreen(c)
+function Client.toggle_fullscreen(c)
   c.fullscreen = not c.fullscreen
   c:raise()
 end
 
-function Client.maximize(c)
+function Client.toggle_maximize(c)
   c.maximized = not c.maximized
   c:raise()
 end
@@ -36,15 +36,15 @@ function Client.kill(c)
   c:kill()
 end
 
-function Client.border_focus(c)
+function Client.border_color_focus(c)
   c.border_color = beautiful.border_focus
 end
 
-function Client.border_normal(c)
+function Client.border_color_normal(c)
   c.border_color = beautiful.border_normal
 end
 
-function Client.to_tag(i)
+function Client.move_to_tag(i)
   return function()
     if client.focus then
       client.focus:move_to_tag(client.focus.screen.tags[i])

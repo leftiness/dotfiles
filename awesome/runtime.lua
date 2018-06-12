@@ -1,3 +1,5 @@
+-- Runtime utility functions for use in hotkeys and signals
+
 local naughty = require('naughty')
 
 local Runtime = {}
@@ -5,8 +7,8 @@ local Runtime = {}
 local function errRuntime(err)
   return {
     preset = naughty.config.presets.critical,
-    title = 'Oops, an error happened!',
-    text = tostring(err)
+    title  = 'Oops, an error happened!',
+    text   = tostring(err)
   }
 end
 

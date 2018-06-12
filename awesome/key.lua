@@ -1,11 +1,13 @@
-local awful = require('awful')
+-- Key bind declarations
+
+local awful   = require('awful')
 local hotkeys = require('awful.hotkeys_popup').widget
 
 local Client = require('client')
-local Mod = require('mod')
-local Mouse = require('mouse')
+local Mod    = require('mod')
+local Mouse  = require('mouse')
 local Screen = require('screen')
-local Tag = require('tag')
+local Tag    = require('tag')
 
 local Key = {}
 
@@ -34,10 +36,10 @@ Key.GLOBAL = awful.util.table.join(
     .new(Mod.SUPER_SHIFT, 'l', awful.tag.viewnext),
 
   Key.with_tip('focus next', 'client')
-    .new(Mod.SUPER, 'j', Client.next),
+    .new(Mod.SUPER, 'j', Client.focus_next),
 
   Key.with_tip('focus previous', 'client')
-    .new(Mod.SUPER, 'k', Client.prev),
+    .new(Mod.SUPER, 'k', Client.focus_previous),
 
   Key.with_tip('grow master', 'layout')
     .new(Mod.SUPER, 'l', Tag.grow),
@@ -57,16 +59,16 @@ for i = 1, 9 do
       .new(Mod.SUPER, '#'..i+9, Tag.view(i)),
 
     Key.with_tip('move to tag #'..i, 'client')
-      .new(Mod.SUPER_SHIFT, '#'..i+9, Client.to_tag(i))
+      .new(Mod.SUPER_SHIFT, '#'..i+9, Client.move_to_tag(i))
   )
 end
 
 Key.CLIENT = awful.util.table.join(
   Key.with_tip('toggle fullscreen', 'client')
-    .new(Mod.SUPER, 'f', Client.fullscreen),
+    .new(Mod.SUPER, 'f', Client.toggle_fullscreen),
 
   Key.with_tip('toggle maximize', 'client')
-    .new(Mod.SUPER, 'm', Client.maximize),
+    .new(Mod.SUPER, 'm', Client.toggle_maximize),
 
   Key.with_tip('promote to master', 'client')
     .new(Mod.SUPER, 'Return', Client.promote),
@@ -76,7 +78,7 @@ Key.CLIENT = awful.util.table.join(
 )
 
 Key.CLIENT_BUTTON = awful.util.table.join(
-  awful.button({}, Mouse.click.LEFT, Client.focus),
+  awful.button({},        Mouse.click.LEFT, Client.focus),
   awful.button(Mod.SUPER, Mouse.click.LEFT, awful.mouse.client.move)
 )
 

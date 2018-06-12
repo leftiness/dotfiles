@@ -1,13 +1,15 @@
-local awful = require('awful')
-local beautiful = require('beautiful')
+-- Screen utility functions and widget declarations
+
+local awful         = require('awful')
+local beautiful     = require('beautiful')
 local hotkeys_popup = require('awful.hotkeys_popup').widget
-local wibox = require('wibox')
+local wibox         = require('wibox')
 
 local Mouse = require('mouse')
 
 local TAGS = { '1', '2', '3', '4', '5', '6', '7', '8', '9' }
 
-local MENU = awful.menu({
+local MAIN_MENU = awful.menu({
   items = {
     { 'terminal', 'urxvt' },
     { 'hotkeys', function() return false, hotkeys_popup.show_help end },
@@ -21,8 +23,8 @@ local function taglist_for_screen(s)
     s,
     awful.widget.taglist.filter.all,
     awful.util.table.join(
-      awful.button({}, Mouse.scroll.UP, function () awful.tag.viewprev() end),
-      awful.button({}, Mouse.scroll.DOWN, function () awful.tag.viewnext() end)
+      awful.button({}, Mouse.scroll.UP,   function() awful.tag.viewprev() end),
+      awful.button({}, Mouse.scroll.DOWN, function() awful.tag.viewnext() end)
     )
   )
 end
@@ -39,13 +41,18 @@ function Screen.on_connect(s)
     layout = wibox.layout.align.horizontal,
     {
       layout = wibox.layout.fixed.horizontal,
-      awful.widget.launcher({ image = beautiful.awesome_icon, menu = MENU }),
+
+      awful.widget.launcher({
+        image = beautiful.awesome_icon,
+        menu = MAIN_MENU
+      }),
       taglist_for_screen(s),
       s.mypromptbox,
     },
     awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags),
     {
       layout = wibox.layout.fixed.horizontal,
+
       awful.widget.keyboardlayout(),
       wibox.widget.systray(),
       wibox.widget.textclock(),

@@ -1,3 +1,4 @@
+-- String keys identifying event signals
 return {
   Awesome = {
     DEBUG_ERROR = 'debug::error'
