@@ -16,3 +16,5 @@ function ranger-cd {
     fi
     rm -f -- "$tempfile"
 }
+
+. ~/.config/git/git-completion.bash
