@@ -21,6 +21,7 @@ function kill(c) c:kill() end
 
 os.execute('nitrogen --restore')
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.useless_gap = 10
 
 awful.layout.layouts = { awful.layout.suit.tile }
 

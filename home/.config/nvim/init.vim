@@ -43,6 +43,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('rbgrouleff/bclose.vim')
   call dein#add('andrewradev/splitjoin.vim')
   call dein#add('scrooloose/nerdcommenter')
+  call dein#add('neomake/neomake')
+  call dein#add('rust-lang/rust.vim')
+  call dein#add('cespare/vim-toml')
   call dein#end()
   call dein#save_state()
 endif
@@ -65,3 +68,11 @@ nnoremap <leader>o :RangerWorkingDirectory<cr>
 let g:NERDCreateDefaultMappings = 0
 let g:NERDSpaceDelims = 1
 noremap <leader>c :call NERDComment(0, "toggle")<cr>
+
+" neomake/neomake
+let g:neomake_open_list = 2
+nnoremap <leader><cr> :Neomake<cr>
+
+" rust-lang/rust.vim
+let g:rustfmt_command = 'rustfmt'
+let g:rustfmt_autosave = 1
