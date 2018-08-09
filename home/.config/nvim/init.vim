@@ -46,6 +46,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('neomake/neomake')
   call dein#add('rust-lang/rust.vim')
   call dein#add('cespare/vim-toml')
+  call dein#add('junegunn/fzf', { 'merged': 0 })
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#end()
   call dein#save_state()
 endif
@@ -76,3 +78,9 @@ nnoremap <leader><cr> :Neomake<cr>
 " rust-lang/rust.vim
 let g:rustfmt_command = 'rustfmt'
 let g:rustfmt_autosave = 1
+
+" junegunn/fzf
+" junegnun/fzf.vim
+let g:fzf_action = { 'enter': 'tabnew' }
+nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>; :History:<cr>
