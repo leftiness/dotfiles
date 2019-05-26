@@ -1,20 +1,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
+if [ -f /etc/bashrc ]; then
+  source /etc/bashrc
+fi
 
-alias ls='ls --color=auto'
-alias ranger='ranger-cd'
-
-# Automatically change the directory in bash after closing ranger
-function ranger-cd {
-    tempfile="$(mktemp -t tmp.XXXXXX)"
-    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
-    test -f "$tempfile" &&
-    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
-        cd -- "$(cat "$tempfile")"
-    fi
-    rm -f -- "$tempfile"
-}
-
-. ~/.config/git/git-completion.bash
+for file in $HOME/.config/bash/*; do
+   source $file
+done
