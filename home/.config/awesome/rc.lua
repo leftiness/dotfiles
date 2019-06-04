@@ -14,9 +14,7 @@ local function bind(f, a) return function() f(a) end end
 
 local function tag(i) return awful.screen.focused().tags[i] end
 local function focus(i) tag(i):view_only() end
-local function move(i)
-  if client.focus then client.focus:move_to_tag(tag(i)) end
-end
+local function move(i) return function(c) c:move_to_tag(tag(i)) end end
 local function kill(c) c:kill() end
 
 os.execute('nitrogen --restore')
@@ -45,24 +43,23 @@ local rootkeys = gears.table.join(
   awful.key({ 'Mod4' }, '#'..6+9, bind(focus, 6)),
   awful.key({ 'Mod4' }, '#'..7+9, bind(focus, 7)),
   awful.key({ 'Mod4' }, '#'..8+9, bind(focus, 8)),
-  awful.key({ 'Mod4' }, '#'..9+9, bind(focus, 9)),
-
-  awful.key({ 'Mod4', 'Shift' }, '#'..1+9, bind(move, 1)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..2+9, bind(move, 2)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..3+9, bind(move, 3)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..4+9, bind(move, 4)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..5+9, bind(move, 5)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..6+9, bind(move, 6)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..7+9, bind(move, 7)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..8+9, bind(move, 8)),
-  awful.key({ 'Mod4', 'Shift' }, '#'..9+9, bind(move, 9))
+  awful.key({ 'Mod4' }, '#'..9+9, bind(focus, 9))
 )
 
 local clientkeys = gears.table.join(
   awful.key({ 'Mod4' }, 'f', xktoggle('fullscreen')),
   awful.key({ 'Mod4' }, 'm', xktoggle('maximized')),
   awful.key({ 'Mod4' }, 'Return', awful.client.setmaster),
-  awful.key({ 'Mod4', 'Shift' }, 'c', kill)
+  awful.key({ 'Mod4', 'Shift' }, 'c', kill),
+  awful.key({ 'Mod4', 'Shift' }, '#'..1+9, move(1)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..2+9, move(2)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..3+9, move(3)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..4+9, move(4)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..5+9, move(5)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..6+9, move(6)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..7+9, move(7)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..8+9, move(8)),
+  awful.key({ 'Mod4', 'Shift' }, '#'..9+9, move(9))
 )
 
 local clientbuttons = gears.table.join(
