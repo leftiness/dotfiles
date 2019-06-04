@@ -7,17 +7,17 @@ local wibox = require('wibox')
 
 require('awful.autofocus')
 
-function vktox(v, k) return function(x) v[k] = x end end
-function xktov(k, v) return function(x) x[k] = v end end
-function xktoggle(k) return function(x) x[k] = not x[k] end end
+local function vktox(v, k) return function(x) v[k] = x end end
+local function xktov(k, v) return function(x) x[k] = v end end
+local function xktoggle(k) return function(x) x[k] = not x[k] end end
+local function bind(f, a) return function() f(a) end end
 
-function bind(f, a) return function() f(a) end end
-
-function tag(i) return awful.screen.focused().tags[i] end
-function focus(i) tag(i):view_only() end
-function move(i) c = client.focus; if c then c:move_to_tag(tag(i)) end end
-function promote(c) c:swap(awful.client.getmaster()) end
-function kill(c) c:kill() end
+local function tag(i) return awful.screen.focused().tags[i] end
+local function focus(i) tag(i):view_only() end
+local function move(i)
+  if client.focus then client.focus:move_to_tag(tag(i)) end
+end
+local function kill(c) c:kill() end
 
 os.execute('nitrogen --restore')
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
@@ -28,9 +28,6 @@ awful.layout.layouts = { awful.layout.suit.tile }
 local rootkeys = gears.table.join(
   awful.key({ 'Mod4', 'Shift' }, 'r', awesome.restart),
   awful.key({ 'Mod4', 'Shift' }, 'q', awesome.quit),
-
-  awful.key({ 'Mod4', 'Shift' }, 'h', awful.tag.viewprev),
-  awful.key({ 'Mod4', 'Shift' }, 'l', awful.tag.viewnext),
 
   awful.key({ 'Mod4' }, 'j', bind(awful.client.focus.byidx, 1)),
   awful.key({ 'Mod4' }, 'k', bind(awful.client.focus.byidx, -1)),
@@ -64,7 +61,7 @@ local rootkeys = gears.table.join(
 local clientkeys = gears.table.join(
   awful.key({ 'Mod4' }, 'f', xktoggle('fullscreen')),
   awful.key({ 'Mod4' }, 'm', xktoggle('maximized')),
-  awful.key({ 'Mod4' }, 'Return', promote),
+  awful.key({ 'Mod4' }, 'Return', awful.client.setmaster),
   awful.key({ 'Mod4', 'Shift' }, 'c', kill)
 )
 
@@ -104,25 +101,26 @@ local systray = {
 
 local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 
-function forscreen(s)
+local tagbuttons = gears.table.join(
+  awful.button({ }, 4, bind(awful.tag.viewidx, -1)),
+  awful.button({ }, 5, bind(awful.tag.viewidx, 1))
+)
+
+local function connect(s)
   awful.tag(tags, s, awful.layout.layouts[1])
 
   awful.wibar({ position = "top", screen = s }):setup({
     layout = wibox.layout.align.horizontal,
     {
       layout = wibox.layout.fixed.horizontal,
-      awful.widget.taglist(s, awful.widget.taglist.filter.all)
+      awful.widget.taglist(s, awful.widget.taglist.filter.all, tagbuttons)
     },
-    awful.widget.tasklist(
-      s,
-      awful.widget.tasklist.filter.currenttags,
-      tasklist_buttons
-    ),
+    awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags),
     systray
   })
 end
 
-awful.screen.connect_for_each_screen(forscreen)
+awful.screen.connect_for_each_screen(connect)
 
 client.connect_signal('mouse::enter', vktox(client, 'focus'))
 client.connect_signal('focus', xktov('border_color', beautiful.border_focus))
