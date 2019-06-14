@@ -1,0 +1,29 @@
+#!/usr/bin/expect -f
+
+set username [exec lpass show my/harmony/brandon --username]
+set password [exec lpass show my/harmony/brandon --password]
+set ldap_username [exec lpass show exm/fusemail/ldap --username]
+set ldap_password [exec lpass show exm/fusemail/ldap --password]
+set certificate_password [exec lpass show exm/fusemail/ldap --field=certificate_password]
+
+spawn {*}$argv
+expect {
+  "\\\[sudo] password for $username" {
+    send "$password\r"
+    exp_continue
+  }
+  "Enter Auth Username:" {
+    send "$ldap_username\r"
+    exp_continue
+  }
+  "Enter Auth Password:" {
+    send "$ldap_password\r"
+    exp_continue
+  }
+  "Enter Private Key Password:" {
+    send "$certificate_password\r"
+    exp_continue
+  }
+  "Initialization Sequence Completed" {}
+}
+interact

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+openvpn-fusemail.expect sudo openvpn ~/secrets/vpnbastion${1:?}.ovpn
