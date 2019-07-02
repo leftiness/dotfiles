@@ -82,5 +82,5 @@ let g:rustfmt_autosave = 1
 " junegunn/fzf
 " junegnun/fzf.vim
 let g:fzf_action = { 'enter': 'tabnew' }
-nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>f :GFiles -cmo --exclude-standard<cr>
 nnoremap <leader>; :History:<cr>
