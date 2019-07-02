@@ -2,6 +2,7 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-PATH=$PATH:~/.local/bin
+PATH=$PATH:~/.local/share/flatpak/exports/bin:~/.local/bin
 
-export EDITOR=nvim
+export GOPATH=$HOME
+export GOBIN=$HOME/.local/bin

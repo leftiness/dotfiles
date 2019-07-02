@@ -1,0 +1,52 @@
+arandr
+awesome
+@base-x # xorg
+bash-completion
+cargo
+cava
+community-mysql
+dmenu
+docker-compose # pip3 install doesn't work
+elinks
+expect
+firefox
+@Fonts
+fuse # shadow
+gcc
+git
+gnupg
+golang
+gpicview
+htop
+jq
+kernel-modules-extra # xpad
+lastpass-cli
+libbsd # shadow
+libva-utils # shadow
+lshw
+lua-devel
+luarocks
+make
+neovim
+NetworkManager-wifi
+nitrogen
+nmap-ncat
+nm-connection-editor
+nodejs
+oathtool
+openvpn
+pavucontrol
+pciutils
+postgresql
+pulseaudio
+pulseaudio-utils
+python2 # mssql-cli
+rust
+scrot
+slock
+st
+usbutils # lsusb
+uuid
+xchm
+xsensors
+zip
