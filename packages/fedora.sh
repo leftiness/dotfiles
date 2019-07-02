@@ -24,10 +24,12 @@ xargs -a <(sed 's/#.*//g' rpmfusion.txt) \
     install
 xargs -a <(sed 's/#.*//g' docker.txt) \
   sudo dnf --enablerepo='docker-ce-stable' install
-xargs -a <(sed 's/#.*//g' luarocks.txt) sudo luarocks install
+xargs -a <(sed 's/#.*//g' luarocks.txt) \
+  luarocks install --tree $HOME/.local/
 pip3 install --user -r pip3.txt
 pip2 install --user -r pip2.txt
-xargs -a <(sed 's/#.*//g' go.txt) go get
+xargs -a <(sed 's/#.*//g' go.txt) GOPATH=$HOME GOBIN=$HOME/.local/bin go get
+xargs -a <(sed 's/#.*//g' gem.txt) gem install --bindir=$HOME/.local/bin
 
 # TODO Awful
 test ! -f $HOME/.local/bin/Shadow.AppImage \

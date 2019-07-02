@@ -1,2 +1,4 @@
 httpie
 ranger-fm
+pgcli
+tabview

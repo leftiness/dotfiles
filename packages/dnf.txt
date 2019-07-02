@@ -24,7 +24,7 @@ lastpass-cli
 libbsd # shadow
 libva-utils # shadow
 lshw
-lua-devel
+lua-devel # luacheck
 luarocks
 make
 neovim
@@ -38,13 +38,17 @@ openvpn
 pavucontrol
 pciutils
 postgresql
+postgresql-dev # pgcli
 pulseaudio
 pulseaudio-utils
 python2 # mssql-cli
+python3-devel # pgcli
+ruby
 rust
 scrot
 slock
 st
+tree
 usbutils # lsusb
 uuid
 xchm
