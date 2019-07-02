@@ -5,6 +5,4 @@ if [ -f /etc/bashrc ]; then
   source /etc/bashrc
 fi
 
-for file in $HOME/.config/bash/*; do
-   source $file
-done
+alias ranger='. ranger'
