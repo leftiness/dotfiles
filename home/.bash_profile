@@ -3,3 +3,5 @@ if [ -f ~/.bashrc ]; then
 fi
 
 PATH=$PATH:~/.local/bin
+
+export EDITOR=nvim
