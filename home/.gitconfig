@@ -1,3 +1,5 @@
 [user]
 	email = leftiness@gmail.com
 	name = Brandon Parmenter
+[url "git@bitbucket.org:fusemail"]
+	insteadOf = https://bitbucket.org/fusemail
