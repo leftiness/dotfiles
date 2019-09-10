@@ -28,8 +28,9 @@ xargs -a <(sed 's/#.*//g' luarocks.txt) \
   luarocks install --tree $HOME/.local/
 pip3 install --user -r pip3.txt
 pip2 install --user -r pip2.txt
-xargs -a <(sed 's/#.*//g' go.txt) GOPATH=$HOME GOBIN=$HOME/.local/bin go get
+xargs -a <(sed 's/#.*//g' go.txt) GOPATH=$HOME/.local go get
 xargs -a <(sed 's/#.*//g' gem.txt) gem install --bindir=$HOME/.local/bin
+xargs -a <(sed 's/#.*//g' npm.txt) npm install --global
 
 # TODO Awful
 test ! -f $HOME/.local/bin/Shadow.AppImage \

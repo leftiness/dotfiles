@@ -3,3 +3,5 @@ if [ -f ~/.bashrc ]; then
 fi
 
 PATH=$PATH:~/.local/share/flatpak/exports/bin:~/.local/bin
+
+export GOPATH=$HOME/.local

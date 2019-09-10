@@ -1,4 +1,5 @@
+csvkit
 httpie
-ranger-fm
 pgcli
+ranger-fm
 tabview

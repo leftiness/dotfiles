@@ -2,9 +2,11 @@ arandr
 awesome
 @base-x # xorg
 bash-completion
+bind-utils # provides /usr/bin/dig
 cargo
 cava
 community-mysql
+detox
 dmenu
 docker-compose # pip3 install doesn't work
 elinks
@@ -16,13 +18,18 @@ gcc
 git
 gnupg
 golang
+golang
 gpicview
+graphviz
 htop
+jmtpfs # mount android filesystem
 jq
 kernel-modules-extra # xpad
 lastpass-cli
 libbsd # shadow
+libreoffice # flatpak release is broken
 libva-utils # shadow
+libXScrnSaver # provides libXss.so.1 (mmdc undocumented dependency)
 lshw
 lua-devel # luacheck
 luarocks
@@ -30,19 +37,23 @@ make
 neovim
 NetworkManager-wifi
 nitrogen
+nmap
 nmap-ncat
 nm-connection-editor
+nodejs
 nodejs
 oathtool
 openvpn
 pavucontrol
 pciutils
+pinta
 postgresql
 postgresql-dev # pgcli
 pulseaudio
 pulseaudio-utils
 python2 # mssql-cli
 python3-devel # pgcli
+remmina
 ruby
 rust
 scrot
@@ -53,4 +64,5 @@ usbutils # lsusb
 uuid
 xchm
 xsensors
+youtube-dl # mpv youtube playback
 zip
