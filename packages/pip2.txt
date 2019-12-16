@@ -1,1 +1,0 @@
-mssql-cli # move to pip3 after https://github.com/dbcli/mssql-cli/issues/233

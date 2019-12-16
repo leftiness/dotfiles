@@ -1,7 +1,7 @@
 #!/usr/bin/expect -f
 
-set username [exec lpass show my/harmony/brandon --username]
-set password [exec lpass show my/harmony/brandon --password]
+set username [exec lpass show exm/alacrity/brandon --username]
+set password [exec lpass show exm/alacrity/brandon --password]
 set ldap_username [exec lpass show exm/fusemail/ldap --username]
 set ldap_password [exec lpass show exm/fusemail/ldap --password]
 set certificate_password [exec lpass show exm/fusemail/ldap --field=certificate_password]

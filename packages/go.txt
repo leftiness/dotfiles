@@ -1,3 +1,0 @@
-github.com/go-bindata/go-bindata/go-bindata # fork of dead jteeuwen/go-bindata
-github.com/hashicorp/nomad
-github.com/hashicorp/vault

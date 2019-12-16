@@ -1,5 +1,4 @@
 csvkit
 httpie
-pgcli
 ranger-fm
 tabview

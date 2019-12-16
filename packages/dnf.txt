@@ -5,64 +5,53 @@ bash-completion
 bind-utils # provides /usr/bin/dig
 cargo
 cava
-community-mysql
 detox
 dmenu
 docker-compose # pip3 install doesn't work
 elinks
 expect
 firefox
+flatpak
 @Fonts
-fuse # shadow
 gcc
 git
 gnupg
 golang
-golang
 gpicview
 graphviz
 htop
-jmtpfs # mount android filesystem
 jq
-kernel-modules-extra # xpad
 lastpass-cli
-libbsd # shadow
 libreoffice # flatpak release is broken
-libva-utils # shadow
-libXScrnSaver # provides libXss.so.1 (mmdc undocumented dependency)
 lshw
 lua-devel # luacheck
 luarocks
+maim
 make
 neovim
+network-manager-applet
 NetworkManager-wifi
 nitrogen
 nmap
 nmap-ncat
-nm-connection-editor
-nodejs
 nodejs
 oathtool
+openconnect
 openvpn
 pavucontrol
 pciutils
 pinta
+plantuml
 postgresql
-postgresql-dev # pgcli
 pulseaudio
 pulseaudio-utils
-python2 # mssql-cli
-python3-devel # pgcli
 remmina
 ruby
 rust
-scrot
 slock
 st
 tree
 usbutils # lsusb
-uuid
-xchm
 xsensors
 youtube-dl # mpv youtube playback
 zip
