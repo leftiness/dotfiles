@@ -1,1 +1,2 @@
 exec awesome
+exec dbus-launch --exit-with-session

@@ -1,0 +1,57 @@
+arandr
+awesome
+@base-x # xorg
+bash-completion
+bind-utils # provides /usr/bin/dig
+cargo
+cava
+detox
+dmenu
+docker-compose # pip3 install doesn't work
+elinks
+expect
+firefox
+flatpak
+@Fonts
+gcc
+git
+gnupg
+golang
+gpicview
+graphviz
+htop
+jq
+lastpass-cli
+libreoffice # flatpak release is broken
+lshw
+lua-devel # luacheck
+luarocks
+maim
+make
+neovim
+network-manager-applet
+NetworkManager-wifi
+nitrogen
+nmap
+nmap-ncat
+nodejs
+oathtool
+openconnect
+openvpn
+pavucontrol
+pciutils
+pinta
+plantuml
+postgresql
+pulseaudio
+pulseaudio-utils
+remmina
+ruby
+rust
+slock
+st
+tree
+usbutils # lsusb
+xsensors
+youtube-dl # mpv youtube playback
+zip
