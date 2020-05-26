@@ -1,6 +1,4 @@
 community-mysql
-fuse # shadow
 jmtpfs # mount android filesystem
-kernel-modules-extra # xpad
 libbsd # shadow
-libva-utils # shadow
+libicu # mssql-cli needs this

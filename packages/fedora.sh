@@ -28,6 +28,7 @@ xargs -a <(sed 's/#.*//g' docker.txt) \
   sudo dnf --enablerepo='docker-ce-stable' install
 xargs -a <(sed 's/#.*//g' luarocks.txt) \
   luarocks install --tree $HOME/.local/
+sudo pip3 install -r pip3.sudo.txt
 pip3 install --user -r pip3.txt
 pip2 install --user -r pip2.txt
 xargs -a <(sed 's/#.*//g' go.txt) GOPATH=$HOME/.local go get
@@ -35,6 +36,9 @@ xargs -a <(sed 's/#.*//g' gem.txt) gem install --bindir=$HOME/.local/bin
 xargs -a <(sed 's/#.*//g' npm.txt) npm install --global
 
 systemctl start docker
+
+# support docker on Fedora 31
+sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
 
 # TODO
 # hostnamectl set-hostname foo

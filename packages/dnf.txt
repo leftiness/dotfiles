@@ -5,29 +5,41 @@ bash-completion
 bind-utils # provides /usr/bin/dig
 cargo
 cava
+dbus-X11 # flatpak apps use this to click links
 detox
+dialog # protonvpn-cli needs this
 dmenu
+dnf-plugins-core
 docker-compose # pip3 install doesn't work
 elinks
 expect
 firefox
 flatpak
 @Fonts
+fuse # shadow
 gcc
 git
 gnupg
 golang
 gpicview
 graphviz
+grubby # configure kernel for legacy docker compatibility
 htop
+ibus-kkc # japanese input
+inotify-tools # inotify-wait
 jq
+kernel-modules-extra # xpad
 lastpass-cli
 libreoffice # flatpak release is broken
+libva # shadow
+libva-utils # shadow
 lshw
+lsof
 lua-devel # luacheck
 luarocks
 maim
 make
+ncdu
 neovim
 network-manager-applet
 NetworkManager-wifi
@@ -38,6 +50,7 @@ nodejs
 oathtool
 openconnect
 openvpn
+parallel
 pavucontrol
 pciutils
 pinta
@@ -45,11 +58,12 @@ plantuml
 postgresql
 pulseaudio
 pulseaudio-utils
+pulseeffects
 remmina
 ruby
 rust
 slock
-st
+st-user
 tree
 usbutils # lsusb
 xsensors

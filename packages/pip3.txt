@@ -1,3 +1,4 @@
+awscli
 csvkit
 httpie
 ranger-fm

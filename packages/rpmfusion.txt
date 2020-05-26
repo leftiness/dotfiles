@@ -1,2 +1,4 @@
 ffmpeg
+librtmp # shadow
+libva-intel-driver # shadow
 mpv

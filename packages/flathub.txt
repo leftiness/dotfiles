@@ -1,4 +1,5 @@
 com.discordapp.Discord
+com.skype.Client
 com.spotify.Client
 io.dbeaver.DBeaverCommunity
 us.zoom.Zoom
