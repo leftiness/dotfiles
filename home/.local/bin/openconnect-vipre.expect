@@ -1,0 +1,27 @@
+#!/usr/bin/expect -f
+
+set username [exec lpass show exm/alacrity/brandon --username]
+set password [exec lpass show exm/alacrity/brandon --password]
+set openconnect_username [exec lpass show exm/vipre/webmail.threattrack.com --username]
+set openconnect_password [exec lpass show exm/vipre/webmail.threattrack.com --password]
+
+spawn {*}$argv
+expect {
+  "\\\[sudo] password for $username" {
+    send "$password\r"
+    exp_continue
+  }
+  "Username:" {
+    send "$openconnect_username\r"
+    exp_continue
+  }
+  "Password:" {
+    send "$openconnect_password\r"
+    exp_continue
+  }
+  "Got HTTP response: HTTP/1.1 512 Custom error" {
+    exit 1
+  }
+  "Connected as *, using SSL, with ESP in progress" {}
+}
+interact
