@@ -27,7 +27,6 @@ nnoremap <s-l> gt
 
 nnoremap ; :
 nnoremap ! :!
-nnoremap <leader>; q:
 
 vnoremap <leader>y "+y
 nnoremap <leader>ya :%y+<cr>
@@ -41,11 +40,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('flazz/vim-colorschemes')
   call dein#add('francoiscabrol/ranger.vim')
   call dein#add('rbgrouleff/bclose.vim')
-  call dein#add('andrewradev/splitjoin.vim')
   call dein#add('scrooloose/nerdcommenter')
   call dein#add('neomake/neomake')
-  call dein#add('rust-lang/rust.vim')
-  call dein#add('cespare/vim-toml')
   call dein#add('junegunn/fzf', { 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#end()
@@ -75,12 +71,10 @@ noremap <leader>c :call NERDComment(0, "toggle")<cr>
 let g:neomake_open_list = 2
 nnoremap <leader><cr> :Neomake<cr>
 
-" rust-lang/rust.vim
-let g:rustfmt_command = 'rustfmt'
-let g:rustfmt_autosave = 1
-
 " junegunn/fzf
 " junegnun/fzf.vim
 let g:fzf_action = { 'enter': 'tabnew' }
 nnoremap <leader>f :GFiles -cmo --exclude-standard<cr>
+nnoremap <leader>F :Files<cr>
 nnoremap <leader>; :History:<cr>
+nnoremap <leader>/ :History/<cr>
