@@ -1,0 +1,5 @@
+framerate = 60
+
+[output]
+; https://github.com/karlstav/cava/issues/196
+method = noncurses
