@@ -26,7 +26,6 @@ graphviz
 grubby # configure kernel for legacy docker compatibility
 htop
 ibus-kkc # japanese input
-inotify-tools # inotify-wait
 jq
 kernel-modules-extra # xpad
 lastpass-cli

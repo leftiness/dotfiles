@@ -1,5 +1,0 @@
-export VAULT_CACERT='/home/brandon/secrets/vault2402a.pem'
-export VAULT_ADDR='https://localhost:8200'
-export VAULT_TOKEN=$(lpass show exm/fusemail/vault2402a --field=token)
-
-vault $@
