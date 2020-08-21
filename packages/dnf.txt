@@ -26,6 +26,7 @@ graphviz
 grubby # configure kernel for legacy docker compatibility
 htop
 ibus-kkc # japanese input
+java-11-openjdk-devel
 jq
 kernel-modules-extra # xpad
 lastpass-cli
@@ -38,6 +39,7 @@ lua-devel # luacheck
 luarocks
 maim
 make
+maven
 ncdu
 neovim
 network-manager-applet
