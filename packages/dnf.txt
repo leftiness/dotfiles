@@ -11,6 +11,7 @@ dialog # protonvpn-cli needs this
 dmenu
 dnf-plugins-core
 docker-compose # pip3 install doesn't work
+dos2unix
 elinks
 expect
 firefox
