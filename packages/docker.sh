@@ -1,12 +1,9 @@
 #!/bin/sh
 
-sudo dnf config-manager \
-  --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+# https://fedoramagazine.org/docker-and-fedora-32/
 
-sudo dnf config-manager --disable 'docker-ce*'
-
-xargs -a <(sed 's/#.*//g' docker.txt) \
-  sudo dnf --enablerepo='docker-ce-stable' install
-
-# https://docs.docker.com/engine/install/fedora/
 sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
+sudo firewall-cmd --permanent --zone=trusted --add-interface=docker0
+sudo firewall-cmd --permanent --zone=FedoraWorkstation --add-masquerade
+sudo dnf install moby-engine docker-compose
+sudo systemctl enable docker
