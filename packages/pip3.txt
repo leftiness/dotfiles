@@ -1,5 +1,4 @@
 awscli
 csvkit
 httpie
-ranger-fm
 tabview
