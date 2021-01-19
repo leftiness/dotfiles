@@ -44,6 +44,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('neomake/neomake')
   call dein#add('junegunn/fzf', { 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('aklt/plantuml-syntax')
   call dein#end()
   call dein#save_state()
 endif
