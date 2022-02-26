@@ -17,16 +17,14 @@ nnoremap <leader>ev :tabnew $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 inoremap jk <esc>
-nnoremap <s-q> <nop>
-nnoremap * :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 
 nnoremap <s-z> :q<cr>
 nnoremap <s-t> :tabnew<cr>
 nnoremap <s-h> gT
 nnoremap <s-l> gt
-
 nnoremap ; :
-nnoremap ! :!
+nnoremap <s-q> <nop>
+nnoremap * :let @/='\<<c-r>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
 
 vnoremap <leader>y "+y
 nnoremap <leader>ya :%y+<cr>
