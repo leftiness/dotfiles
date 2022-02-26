@@ -68,7 +68,8 @@ nnoremap <leader>o :RangerWorkingDirectory<cr>
 let g:fzf_action = { 'enter': 'tabnew' }
 nnoremap <leader>f :GFiles -cmo --exclude-standard<cr>
 nnoremap <leader>F :Files<cr>
-nnoremap <leader>; :History:<cr>
+nnoremap <leader>; :Commands<cr>
+nnoremap <leader>: :History:<cr>
 nnoremap <leader>/ :History/<cr>
 
 " preservim/nerdcommenter
