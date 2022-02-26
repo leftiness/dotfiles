@@ -41,10 +41,10 @@ if dein#load_state('~/.cache/dein')
   call dein#add('aklt/plantuml-syntax')
   call dein#add('francoiscabrol/ranger.vim')
   call dein#add('rbgrouleff/bclose.vim')
-  call dein#add('scrooloose/nerdcommenter')
   call dein#add('neomake/neomake')
   call dein#add('junegunn/fzf', { 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  call dein#add('preservim/nerdcommenter')
   call dein#add('Omnisharp/omnisharp-vim')
   call dein#add('dense-analysis/ale')
   call dein#end()
@@ -65,11 +65,6 @@ colorscheme molokai
 let g:ranger_map_keys = 0
 nnoremap <leader>o :RangerWorkingDirectory<cr>
 
-" scrooloose/nerdcommenter
-let g:NERDCreateDefaultMappings = 0
-let g:NERDSpaceDelims = 1
-noremap <leader>c :call NERDComment(0, "toggle")<cr>
-
 " neomake/neomake
 let g:neomake_open_list = 2
 nnoremap <leader><cr> :Neomake<cr>
@@ -81,3 +76,7 @@ nnoremap <leader>f :GFiles -cmo --exclude-standard<cr>
 nnoremap <leader>F :Files<cr>
 nnoremap <leader>; :History:<cr>
 nnoremap <leader>/ :History/<cr>
+
+" preservim/nerdcommenter
+let g:NERDCreateDefaultMappings = 0
+noremap <leader>c :call nerdcommenter#Comment(0, "toggle")<cr>
